@@ -14,7 +14,10 @@ Thermostat.prototype.maximumTemperature = function(){
   } else {
     return 32;
   }
+}
 
+Thermostat.prototype.changeMode = function(){
+  this.isPowerSaving = !this.isPowerSaving;
 }
 
 Thermostat.prototype.up  = function(){
@@ -26,6 +29,10 @@ Thermostat.prototype.up  = function(){
 Thermostat.prototype.down = function(){
   if (this.temperature > this.MINIMUM_TEMPERATURE){
     this.temperature--;
+  }
+
+  Thermostat.prototype.reset = function(){
+    this.temperature = 20;
   }
 
 }

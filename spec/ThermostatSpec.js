@@ -33,11 +33,25 @@ describe("Thermostat", function(){
     expect(thermostat.getTemperature()).toEqual(25);
   });
 
+  it("should change power saving mode", function(){
+    thermostat.changeMode();
+    expect(thermostat.maximumTemperature()).toEqual(32);
+  });
+
   it("should increase up to 32 degrees if saving mode is off", function(){
-    thermostat.isPowerSaving = false;
+    thermostat.changeMode();
     for (var i = 0; i < 12; i++){
       thermostat.up();
     }
     expect(thermostat.getTemperature()).toEqual(32);
   });
+
+  it("should have a reset function", function(){
+    for(var i = 0; i < 8; i++){
+      thermostat.down();
+    }
+    thermostat.reset();
+    expect(thermostat.getTemperature()).toEqual(20);
+  });
+
 });
